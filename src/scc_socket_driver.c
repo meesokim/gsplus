@@ -23,6 +23,10 @@
 
 /* This file contains the socket calls */
 
+#ifdef __MINGW64__
+#undef _WINSOCK2API_
+#endif
+#include <ws2tcpip.h>
 #include "defc.h"
 #include "scc.h"
 #include <string.h>

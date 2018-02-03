@@ -27,9 +27,11 @@
 #ifdef HPUX
 # include <sys/audio.h>
 #endif
+#ifndef WIN_SOUND
 #ifdef HAVE_SDL
 # include "SDL.h"
 long sound_init_device_sdl();
+#endif
 #endif
 
 #if defined(__linux__) || defined(OSS)
@@ -142,7 +144,9 @@ child_sound_loop(int read_fd, int write_fd, word32 *shm_addr)
 	g_childsnd_vbl = 0;
 	g_childsnd_shm_addr = shm_addr;
 
-#if defined(HAVE_SDL)
+#if defined(WIN_SOUND)
+	
+#elif defined(HAVE_SDL)
   //child_sound_init_sdl();
 	long rate = sound_init_device_sdl();
   return;

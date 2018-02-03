@@ -377,10 +377,10 @@ sound_init_general()
 
 	parent_sound_get_sample_rate(g_pipe2_fd[0]);
 #else
-# if defined (HAVE_SDL)
-	sdlsnd_init(shmaddr);
-# elif defined (WIN_SOUND)
+# if defined (WIN_SOUND)
 	win32snd_init(shmaddr);
+# elif defined (HAVE_SDL)
+	sdlsnd_init(shmaddr);
 # elif defined (MAC) && !defined(HAVE_SDL)
   macsnd_init(shmaddr);
 # elif defined (__OS2__)

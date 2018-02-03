@@ -36,12 +36,21 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #endif
 #ifdef WIN32
 #include <winsock.h>
+typedef struct _SOCKET_ADDRESS {
+  LPSOCKADDR lpSockaddr;
+  INT        iSockaddrLength;
+} SOCKET_ADDRESS, *PSOCKET_ADDRESS;
+
 #include <IPHlpApi.h>
 #endif
 #ifdef __linux__
 #include <netinet/in.h>
 #include <netpacket/packet.h>
 #endif
+
+
+
+
 
 extern int g_ethernet_interface;
 

@@ -23,7 +23,8 @@
 
 #include <ctype.h>
 
-#ifdef _WIN32
+#ifdef __MINGW64__
+//#ifdef _WIN32
 # include <winsock2.h>
 #else
 # include <sys/socket.h>

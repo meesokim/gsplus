@@ -24,9 +24,11 @@
 /* This file contains the Win32 COM1/COM2 calls */
 
 #include "defc.h"
-#include "scc.h"
-
-#ifdef __CYGWIN__
+#ifdef __MINGW64__
+#undef _WINSOCK2API_
+#undef _WIN32
+#endif
+#ifdef __MINGW64__
 #include <Windows.h>
 #include <NspAPI.h>
 #endif
@@ -34,11 +36,12 @@
 #ifdef UNDER_CE
 #define vsnprintf _vsnprintf
 #endif
+#include "scc.h"
 
 extern Scc scc_stat[2];
 extern word32 g_c025_val;
 
-#ifdef _WIN32
+#ifdef __MINGW64__
 int
 scc_serial_win_init(int port)
 {
